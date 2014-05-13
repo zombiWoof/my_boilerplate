@@ -1,25 +1,32 @@
-// VARS
-
-/*
-    TIP: utiliser le REM => TODO: dans les ._fontTutu()
-    html{ font-size: 62.5%; }
-    body{ // =14px
-      font-size: 14px;
-      font-size: 1.4rem;
-    }
-    h1{ // =24px
-      font-size: 24px;
-      font-size: 2.4rem;
-    }
-*/
-
-
+// Mixins, Fonts, Vars, Mini reset
+@import "utilities.less";
 
 // LAYOUT
-	body{margin:0 auto;min-width:1000px;font:1em/1.2em sans-serif;}
+html {font-size:62.5%;}
+
+body {background:#f7f7f7;color:@colorTxtDefault;
+  line-height:1.55;
+  ._font-size(1.4);
+}
+
+// HEADER
+
+// HOME
+
+// EDITO
+
+// FOOTER
 
 
+.btn {position:relative;border:1px solid transparent;display:inline-block;padding:8px 13px;border-radius: 5px;-webkit-appearance:none; font-family:@Arial;font-weight:300;._font-size(1.4);cursor:pointer;
+   // transition:all 100ms ease;
+
+  &:hover {box-shadow:inset 0 0 5px 0 rgba(0,0,0,.3);}
+  &:active {top:1px;box-shadow:inset 0 0 5px 0 rgba(0,0,0,.6);}
+  &.btn-no-hover:hover {}
+}
 
 
 //@import "plugins.less";
+//@import "mobile.less";
 //@import "print.less";

@@ -2,8 +2,19 @@
     "name": "c2is-onetea",
     "version": "2.0.0",
     "dependencies": {
-        "modernizr": "~2.7.0",
-        "jquery": "~1.10.2",
-        "normalize-css": "~2.1.3"
+        "modernizr": "2.8.1",
+        "jquery": "1.11.1",
+        "c2is-less": "https://github.com/c2is/c2is-less-component.git",
+        "normalize-css": "latest"
+    },
+    "devDependencies": {
+        "flexslider": "*"
+      /*,"owlcarousel": "~1.3.2"*/
     }
 }
+
+
+
+
+
+

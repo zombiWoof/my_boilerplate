@@ -1,20 +1,32 @@
 {
-  "name": "c2is-onetea",
+  "name": "Project Name...",
   "title": "Front-end Project Quick Init",
   "url": "http://github.com/c2is/c2is-onetea",
-  "author": "C2iS - front-end team",
-  "copyright": "2013",
-  "version": "2.0.0",
+  "author": "C2iS - AFO",
+  "copyright": "2014",
+  "version": "0.1.0",
   "path": "",
   "repository": {
     "type": "git",
-    "url": "http://github.com/c2is/c2is-onetea.git"
+    "url": "https://github.com/zombiWoof/my_boilerplate.git"
   },
   "devDependencies": {
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-recess": "latest",
-    "grunt-autoprefixer": "latest",
-    "matchdep": "latest"
+      "grunt-contrib-watch": "latest",
+      "grunt-contrib-uglify": "latest",
+      "grunt-contrib-jshint": "latest",
+      /*"grunt-contrib-copy":"0.5.0",*/
+      "grunt-recess": "latest",
+      "grunt-includes": "~0.4.0",
+      "grunt-autoprefixer": "0.7.3",
+      "matchdep": "latest",
+      "grunt-smushit": "~1.1.2",
+      "grunt-svg2png": "~0.2.1"
   }
 }
+
+
+
+
+
+
+

@@ -1,8 +1,4 @@
-/*!
- * c2is-onetea Gruntfile
- * http://github.com/c2is/c2is-onetea
- * @author C2iS - front-end team
- */
+
 'use strict';
 
 /**
@@ -29,11 +25,7 @@ module.exports = function(grunt) {
         tag: {
             banner: '/*!\n' +
                 ' * <%= pkg.name %>\n' +
-                ' * <%= pkg.title %>\n' +
-                ' * <%= pkg.url %>\n' +
                 ' * @author <%= pkg.author %>\n' +
-                ' * @version <%= pkg.version %>\n' +
-                ' * Copyright <%= pkg.copyright %>\n' +
                 ' */\n'
         },
 
@@ -47,20 +39,29 @@ module.exports = function(grunt) {
                 banner: '<%= tag.banner %>'
             },
             modernizr: {
-                src: '<%= pkg.path %>vendors/modernizr/modernizr.js',
-                dest: '<%= pkg.path %>js/min/modernizr.min.js'
+                src: 'vendors/modernizr/modernizr.js',
+                dest: 'js/min/modernizr.min.js'
             },
-            /*vendors: { src: [
-             'vendors/....js
-             //,'vendors/....js
-             ],
-             dest: '<%= pkg.path %>js/min/...
-             },
-             */
+            vendors: {
+                src: [
+                    /*'vendors/flexslider/jquery.flexslider.js',*/
+                ],
+                dest: 'js/min/vendors.min.js'
+            },
             front: {
-                src: '<%= pkg.path %>js/front.js',
-                dest: '<%= pkg.path %>js/min/front.min.js'
+                src: 'js/front.js',
+                dest: 'js/min/front.min.js'
             }
+        },
+
+        /**
+         * JSHint
+         * Validate files with JSHint.
+         * https://github.com/gruntjs/grunt-contrib-jshint
+         */
+        jshint: {
+            all: ['js/*'],
+            options: { ignores: ['js/min/*'] }
         },
 
         /**
@@ -69,28 +70,41 @@ module.exports = function(grunt) {
          * https://github.com/sindresorhus/grunt-recess
          */
         recess: {
-            less2css: {
+            compileless: {
                 options: {
                     compile: true
                 },
                 files: {
-                    '<%= pkg.path %>css/screen.min.css': [
-                        '<%= pkg.path %>vendors/normalize-css/normalize.css'
-                        ,'<%= pkg.path %>less/screen.less'
-                        //,'<%= pkg.path %>less/output.less'
-                        //,'<%= pkg.path %>less/output2.less'
-                    ],
-                    '<%= pkg.path %>css/print.min.css': ['<%= pkg.path %>less/print.less']
+                    'css/screen.css': [
+                        'vendors/normalize-css/normalize.css',
+                        'less/screen.less'
+                    ]
                 }
             },
-            mincss: {
+            compressless: {
                 options: {
                     banner: '<%= tag.banner %>',
                     compress: true
                 },
                 files: {
-                    '<%= pkg.path %>css/screen.min.css': ['<%= pkg.path %>css/screen.min.css'],
-                    '<%= pkg.path %>css/print.min.css': ['<%= pkg.path %>css/print.min.css']
+                    'css/screen.css': ['css/screen.css']
+                }
+            }
+        },
+
+        /**
+         * includes
+         * For including a file within another file (think php includes).
+         * https://github.com/vanetix/grunt-includes
+         */
+        includes: {
+            files: {
+                src: ['dev_html/*.html'], // Source files
+                dest: 'build', // Destination directory
+                flatten: true,
+                cwd: '.',
+                options: {
+                    silent: false
                 }
             }
         },
@@ -101,13 +115,21 @@ module.exports = function(grunt) {
          * Watching development files and run concat/compile tasks
          */
         watch: {
+            options: {
+                atBegin:true,
+                livereload:true
+            },
             less: {
-                files: '<%= pkg.path %>less/*.less',
-                tasks: ['mincss']
+                files: 'less/*.less',
+                tasks: ['compilecss']
             },
             js: {
-                files: '<%= pkg.path %>js/*.js',
+                files: 'js/*.js',
                 tasks: ['minjs']
+            },
+            html: {
+                files: ['dev_html/*.html', 'dev_html/includes/*.html'],
+                tasks: ['build']
             }
         },
 
@@ -118,21 +140,52 @@ module.exports = function(grunt) {
          */
         autoprefixer: {
             options: {
-                browsers: ['last 2 version', 'safari 6', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
+                browsers: ['last 3 versions', 'Explorer 8', 'Firefox ESR', 'Opera 12.1', 'iOS 5', 'Android 3']
             },
             css: {
                 files: {
-                    '<%= pkg.path %>css/screen.min.css': ['<%= pkg.path %>css/screen.min.css'],
-                    '<%= pkg.path %>css/print.min.css': ['<%= pkg.path %>css/print.min.css']
+                    'css/screen.css': ['css/screen.css']
                 }
             }
-        }
+        },
 
+        /**
+         * svg2png
+         * Grunt plugin to rasterize SVG to PNG images using PhantomJS
+         * https://github.com/dbushell/grunt-svg2png
+         */
+        svg2png: {
+            all: {
+                files: [
+                    {src: ['images/common/*.svg']}
+                ]
+            }
+        },
+
+
+        /**
+         * grunt-smushit
+         * Grunt plugin to remove unnecessary bytes of PNG and JPG
+         * https://github.com/heldr/grunt-smushit
+         */
+        smushit: {
+            mygroup: {
+                src: ['images/common/**'],
+                dest: 'images/optim'
+            }
+        }
     });
 
-    grunt.registerTask('default', ['mincss','minalljs']);
-    //grunt.registerTask('mincss', ['recess:less2css', 'autoprefixer', 'recess:mincss']); // activer à la mise en prod
-    grunt.registerTask('mincss', ['recess:less2css', 'autoprefixer']);
-    grunt.registerTask('minalljs', 'uglify');
-    grunt.registerTask('minjs', 'uglify:front');
+
+    /**
+     * Registering tasks
+     */
+    grunt.registerTask('default', ['compilecss','minalljs','build']);
+    grunt.registerTask('compilecss', ['recess:compileless', 'autoprefixer']);
+    grunt.registerTask('mincss', ['recess:compileless', 'autoprefixer', 'recess:compressless']);
+    grunt.registerTask('minalljs',['jshint', 'uglify']);
+    grunt.registerTask('minjs', ['jshint','uglify:front']);
+    grunt.registerTask('build', ['includes']);
+    grunt.registerTask('minimg', ['smushit']);
+    grunt.registerTask('svg', ['svg2png']);
 };
