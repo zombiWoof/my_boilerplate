@@ -15,9 +15,27 @@ $(function () {
         polyfillPlaceholder();
     }
 
+    skinSelect();
 });
 
 })(jQuery, window, document);
+
+// Skinned dropdown list
+function skinSelect() {
+    var select = $("select.skinMe-select");
+
+    select.css('opacity','0').wrap("<div class='skinSelect'></div>").after("<span class='placeholder'></span>");
+
+    select.each(function() {
+        var defaultTxt = $('option:selected', this).text();
+        $(this).next('.placeholder').text(defaultTxt);
+    });
+
+    select.change(function() {
+        var defaultTxt = $('option:selected', this).text();
+        $(this).next('.placeholder').text(defaultTxt);
+    });
+}
 
 // html5 placeholder fallback
 function polyfillPlaceholder(){

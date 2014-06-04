@@ -1,0 +1,103 @@
+include "includes/inc_header.html"
+
+<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+<style>
+    .styleguide {
+        width:700px;
+        background: #fff;
+        margin:50px auto;
+        padding:50px;
+    }
+
+    .styleguide h1 {font-family: 'Sacramento', cursive;font-size:50px;text-align:center;margin-bottom:30px;color:#5c5c5c}
+    .styleguide h2 {border-bottom: 1px solid #f4f4f4;font-weight:bold;margin:40px 0 10px;font-size:17px;color:#5c5c5c}
+    .styleguide h3 {margin:25px 0 5px;font-weight:bold;font-size:11px;color:#5c5c5c}
+</style>
+<main class="main styleguide" role="main">
+  <h1>Styleguide</h1>
+    <h2>Form Elements</h2>
+    <h3>Radio (Block) :</h3>
+
+    <div class="skinMe">
+        <input type="radio" id="radio1" name="radiogroup" checked>
+        <label for="radio1">
+           Lorem ipsum dolor 1
+        </label>
+    </div>
+
+    <div class="skinMe">
+        <input type="radio" id="radio2" name="radiogroup">
+        <label for="radio2">
+            Lorem ipsum dolor 2
+        </label>
+    </div>
+
+    <div class="skinMe">
+        <input type="radio" id="radio3" name="radiogroup">
+        <label for="radio3">
+            Lorem ipsum dolor 3
+        </label>
+    </div>
+
+    <h3>Radio (inline) :</h3>
+
+    <div class="skinMe inline">
+        <input type="radio" id="radio4" name="radiogroup2">
+        <label for="radio4">
+           Oui
+        </label>
+    </div>
+
+    <div class="skinMe inline">
+        <input type="radio" id="radio5" name="radiogroup2" checked>
+        <label for="radio5">
+           Non
+        </label>
+    </div>
+
+    <div class="skinMe inline">
+        <input type="radio" id="radio6" name="radiogroup2">
+        <label for="radio6">
+            Je ne sais pas
+        </label>
+    </div>
+
+    <h3>Checkbox :</h3>
+
+    <div class="skinMe">
+        <input type="checkbox" id="cb1">
+        <label for="cb1">
+          Lorem ipsum 1
+        </label>
+    </div>
+
+    <div class="skinMe">
+        <input type="checkbox" id="cb2">
+        <label for="cb2">
+            Lorem ipsum 2
+        </label>
+    </div>
+
+   <h3>Select with min and max-width :</h3>
+    This is a dropdow list :
+
+    <select class="skinMe-select">
+        <option>Choose something</option>
+        <option>Lorem ispum</option>
+        <option>Lorem ispum dolort sit amet ut vinum itaque nor varnum</option>
+        <option>Lorem 1</option>
+        <option>Lorem 2</option>
+        <option>Lorem 3</option>
+        <option>4</option>
+        <option>Lorem 5</option>
+    </select>
+
+    <h2>Buttons</h2>
+    <a href="#_" class="btn">I'm an &lt;a&gt; tag</a>
+    <span class="btn">I'm a &lt;span&gt; tag</span>
+    <input type="submit" value="I'm an <input> tag" class="btn">
+    <button class="btn">I'm a &lt;button&gt; tag</button>
+
+</main>
+
+include "includes/inc_footer.html"

@@ -18,11 +18,11 @@ body {background:#f7f7f7;color:@colorTxtDefault;
 // FOOTER
 
 
-.btn {position:relative;border:1px solid transparent;display:inline-block;padding:8px 13px;border-radius: 5px;-webkit-appearance:none; font-family:@Arial;font-weight:300;._font-size(1.4);cursor:pointer;
+.btn {vertical-align:middle;text-align:center;min-height:36px;text-decoration:none;background:@colorTestStyleGuide;color:#fff;position:relative;border:1px solid transparent;display:inline-block;padding:6px 13px;border-radius: 3px;-webkit-appearance:none; font-family:@Arial;font-weight:300;._font-size(1.4);cursor:pointer;
    // transition:all 100ms ease;
 
-  &:hover {box-shadow:inset 0 0 5px 0 rgba(0,0,0,.3);}
-  &:active {top:1px;box-shadow:inset 0 0 5px 0 rgba(0,0,0,.6);}
+  &:hover {background:darken(@colorTestStyleGuide,5%)}
+  &:active {top:1px;background:darken(@colorTestStyleGuide,8%)}
   &.btn-no-hover:hover {}
 }
 
