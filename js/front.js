@@ -22,9 +22,9 @@ $(function () {
 
 // Skinned dropdown list
 function skinSelect() {
-    var select = $("select.skinMe-select");
+    var select = $("select.skinMe-select").not('.skinned');
 
-    select.css('opacity','0').wrap("<div class='skinSelect'></div>").after("<span class='placeholder'></span>");
+    select.addClass('skinned').css('opacity','0').wrap("<div class='skinSelect'></div>").after("<span class='placeholder'></span>");
 
     select.each(function() {
         var defaultTxt = $('option:selected', this).text();
