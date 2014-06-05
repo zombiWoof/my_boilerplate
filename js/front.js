@@ -24,17 +24,40 @@ $(function () {
 function skinSelect() {
     var select = $("select.skinMe-select").not('.skinned');
 
-    select.addClass('skinned').css('opacity','0').wrap("<div class='skinSelect'></div>").after("<span class='placeholder'></span>");
+    select.addClass('skinned').css('opacity','0').wrap("<div class='selectWrapper'></div>").after("<span class='placeholder'></span>");
 
     select.each(function() {
         var defaultTxt = $('option:selected', this).text();
+        var disabled = $(this).attr('disabled');
+        var multiple = $(this).attr('multiple');
+
         $(this).next('.placeholder').text(defaultTxt);
+
+        if (typeof disabled !== 'undefined' && disabled !== false) {
+            $(this).parent('.selectWrapper').addClass('disabled');
+        }
+
+        if (typeof multiple !== 'undefined' && multiple !== false) {
+            $(this).parent('.selectWrapper').addClass('multiple');
+            $(this).find('option').each(function() {
+                $(this).append('&nbsp; ');
+            });
+        }
     });
 
     select.change(function() {
         var defaultTxt = $('option:selected', this).text();
         $(this).next('.placeholder').text(defaultTxt);
     });
+}
+
+function killSkinSelect() {
+    var skinnedOnes =  $("select.skinned");
+
+    skinnedOnes.each(function() {
+        $(this).removeClass('skinned').css('opacity','1').unwrap().next(".placeholder").remove();
+    });
+    skinnedOnes.off();
 }
 
 // html5 placeholder fallback

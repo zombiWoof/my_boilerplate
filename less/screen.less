@@ -2,7 +2,11 @@
 @import "utilities.less";
 
 // LAYOUT
-html {font-size:62.5%;}
+html {font-size:62.5%;
+  font-size: calc(1em * 0.625);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 
 body {background:#f7f7f7;color:@colorTxtDefault;
   line-height:1.55;
@@ -18,7 +22,7 @@ body {background:#f7f7f7;color:@colorTxtDefault;
 // FOOTER
 
 
-.btn {vertical-align:middle;text-align:center;min-height:36px;text-decoration:none;background:@colorTestStyleGuide;color:#fff;position:relative;border:1px solid transparent;display:inline-block;padding:6px 13px;border-radius: 3px;-webkit-appearance:none; font-family:@Arial;font-weight:300;._font-size(1.4);cursor:pointer;
+.btn {vertical-align:middle;text-align:center;min-height:36px;text-decoration:none;background:@colorTestStyleGuide;color:#fff;position:relative;border:1px solid transparent;display:inline-block;padding:6px 13px;margin-bottom:5px;border-radius: 3px;-webkit-appearance:none; font-family:@Arial;font-weight:300;._font-size(1.4);cursor:pointer;
    // transition:all 100ms ease;
 
   &:hover {background:darken(@colorTestStyleGuide,5%)}

@@ -3,7 +3,7 @@ include "includes/inc_header.html"
 <link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 <style>
     .styleguide {
-        width:700px;
+        width:790px;
         background: #fff;
         margin:50px auto;
         padding:50px;
@@ -12,10 +12,12 @@ include "includes/inc_header.html"
     .styleguide h1 {font-family: 'Sacramento', cursive;font-size:50px;text-align:center;margin-bottom:30px;color:#5c5c5c}
     .styleguide h2 {border-bottom: 1px solid #f4f4f4;font-weight:bold;margin:40px 0 10px;font-size:17px;color:#5c5c5c}
     .styleguide h3 {margin:25px 0 5px;font-weight:bold;font-size:11px;color:#5c5c5c}
+    .styleguide .autoWidth {margin:0 0 25px;}
+    .styleguide .autoWidth li {padding:25px 0;border:1px solid #efefef;text-align:center;}
 </style>
 <main class="main styleguide" role="main">
   <h1>Styleguide</h1>
-    <h2>Form Elements</h2>
+    <h2>Radio & Checkbox</h2>
     <h3>Radio (Block) :</h3>
 
     <div class="skinMe">
@@ -77,27 +79,102 @@ include "includes/inc_header.html"
             Lorem ipsum 2
         </label>
     </div>
-
+    <h2>Select</h2>
    <h3>Select with min and max-width :</h3>
-    This is a dropdow list :
 
+    This is a dropdow list :
     <select class="skinMe-select">
         <option>Choose something</option>
         <option>Lorem ispum</option>
         <option>Lorem ispum dolort sit amet ut vinum itaque nor varnum</option>
         <option>Lorem 1</option>
-        <option>Lorem 2</option>
+        <option selected="selected">Lorem 2</option>
         <option>Lorem 3</option>
         <option>4</option>
         <option>Lorem 5</option>
     </select>
+
+   another one :
+    <select class="skinMe-select">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <h3>Select with &lt;optgroup&gt; :</h3>
+    This is a dropdow list :
+
+    <select class="skinMe-select">
+        <option>Choose something</option>
+        <optgroup label="Group 1">
+            <option>Lorem 1</option>
+            <option>Lorem 2</option>
+            <option>Lorem 3</option>
+        </optgroup>
+        <optgroup label="Group 2">
+            <option>Ipsum 1</option>
+            <option>Ipsum 2</option>
+        </optgroup>
+        <optgroup label="Group 3" disabled>
+            <option>Dolor 1</option>
+            <option>Dolor 2</option>
+        </optgroup>
+    </select>
+
+    <h3>Select with multiple attribute :</h3>
+    This is a dropdow list :
+
+    <select class="skinMe-select" multiple>
+        <option>test 1</option>
+        <option>test 2</option>
+        <option>test 3</option>
+        <option>test 4</option>
+        <option>test 5</option>
+        <option>test 6</option>
+        <option>test 7</option>
+        <option>test 8 plus long</option>
+        <option>test 9</option>
+    </select>
+
+    <h3>Disabled Select :</h3>
+    This is a dropdow list :
+
+    <select class="skinMe-select" disabled>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <h3>On/Off</h3>
+    <button class="btn" onclick="killSkinSelect()">Turn off skin</button>
+    <button class="btn" onclick="skinSelect()">Turn on skin</button>
 
     <h2>Buttons</h2>
     <a href="#_" class="btn">I'm an &lt;a&gt; tag</a>
     <span class="btn">I'm a &lt;span&gt; tag</span>
     <input type="submit" value="I'm an <input> tag" class="btn">
     <button class="btn">I'm a &lt;button&gt; tag</button>
+    <button class="btn">I'm a &lt;button&gt; tag <br> over 2 lines</button>
 
+    <h2>Auto Width</h2>
+    <ul class="autoWidth">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <ul class="autoWidth">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <ul class="autoWidth">
+        <li>1</li>
+        <li>2</li>
+    </ul>
 </main>
 
 include "includes/inc_footer.html"
